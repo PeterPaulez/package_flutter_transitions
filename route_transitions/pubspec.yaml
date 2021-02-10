@@ -1,6 +1,6 @@
 name: custom_route_transition_peterpaulez
 description: This package helps how to manage transitions between different views/pages.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/PeterPaulez
 
 environment:

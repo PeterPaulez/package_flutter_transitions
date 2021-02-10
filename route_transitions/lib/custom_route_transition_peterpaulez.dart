@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Default transition 300 ms
 const durationDefault = Duration(milliseconds: 300);
 enum AnimationType { normal, fadeIn }
 
@@ -12,8 +11,8 @@ class RouteTransitions {
   final BuildContext context;
   final Widget child;
   final AnimationType animation;
-  final Duration duration;
-  final bool replacement;
+  final Duration duration; // Default transition 300 ms
+  final bool replacement; // No replacement by default
 
   RouteTransitions({
     @required this.context,
