@@ -1,6 +1,6 @@
 name: custom_route_transition_peterpaulez
-description: A new Flutter package project.
-version: 0.0.1
+description: This package helps how to manage transitions between different views/pages.
+version: 0.1.0
 homepage: https://github.com/PeterPaulez
 
 environment:

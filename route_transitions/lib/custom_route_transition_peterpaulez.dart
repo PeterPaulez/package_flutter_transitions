@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
+// Default transition 300 ms
 const durationDefault = Duration(milliseconds: 300);
-enum AnimationType { normal, fafeIn }
+enum AnimationType { normal, fadeIn }
 
+/// Main core Class
+///
+/// [context] is the BuildContext de la app at this moment [child] is the widget to go,
+/// [animation] is the type of animation
 class RouteTransitions {
   final BuildContext context;
   final Widget child;
@@ -21,12 +26,13 @@ class RouteTransitions {
       case AnimationType.normal:
         this._normalTransition();
         break;
-      case AnimationType.fafeIn:
+      case AnimationType.fadeIn:
         this._fadeInTransition();
         break;
     }
   }
 
+  /// Function who decides about [replacement]
   void _pushPageType(Route route) {
     if (this.replacement) {
       Navigator.pushReplacement(this.context, route);
@@ -35,11 +41,13 @@ class RouteTransitions {
     }
   }
 
+  /// Controller of normal transition
   void _normalTransition() {
     final route = MaterialPageRoute(builder: (_) => this.child);
     this._pushPageType(route);
   }
 
+  /// Controller of fadein transition
   void _fadeInTransition() {
     final route = PageRouteBuilder(
       pageBuilder: (_, __, ___) => this.child,
