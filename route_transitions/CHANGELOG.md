@@ -1,3 +1,8 @@
+## [0.2.0] - New Types of Transition and new optional value Curves
+* Vertical and Horizontal transition make 4 different options
+* 3 different types of curves: Bounce, Ease and Decelerate
+* Changed example and explain how works the package
+
 ## [0.1.1] - Functionality example added
 * There is added a 100% example working to test in your side
 

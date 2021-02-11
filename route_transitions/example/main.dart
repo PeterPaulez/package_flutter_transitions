@@ -37,6 +37,7 @@ class UnoPage extends StatelessWidget {
               animation: AnimationType.fadeIn,
               duration: Duration(milliseconds: 500),
               replacement: true,
+              curveType: CurveType.bounce,
             );
           },
           color: Colors.white,
@@ -63,9 +64,10 @@ class DosPage extends StatelessWidget {
             RouteTransitions(
               context: context,
               child: UnoPage(),
-              animation: AnimationType.fadeIn,
+              animation: AnimationType.normal,
               duration: Duration(milliseconds: 2000),
               replacement: true,
+              curveType: CurveType.decelerate,
             );
           },
           color: Colors.white,
