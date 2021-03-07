@@ -34,10 +34,10 @@ class UnoPage extends StatelessWidget {
             RouteTransitions(
               context: context,
               child: DosPage(),
-              animation: AnimationType.fadeIn,
+              animation: AnimationType.scale,
               duration: Duration(milliseconds: 500),
               replacement: true,
-              curveType: CurveType.bounce,
+              curveType: CurveType.bounceOut,
             );
           },
           color: Colors.white,

@@ -1,3 +1,9 @@
+## [0.3.0] - Added new type of Transition and 3 more types of Curves
+* ScaleTransition
+* 3 different types of curves: bounceOut, elastic and linear
+* Added an example video
+* Added better documentation
+
 ## [0.2.0] - New Types of Transition and new optional value Curves
 * Vertical and Horizontal transition make 4 different options
 * 3 different types of curves: Bounce, Ease and Decelerate

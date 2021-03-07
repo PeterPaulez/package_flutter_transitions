@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
 
-// Different types of ROUT TRANSITION
+/// Different types of ROUTE TRANSITION
 enum AnimationType {
   normal,
   fadeIn,
   slideRight,
   slideLeft,
   slideTop,
-  slideBottom
+  slideBottom,
+  scale
 }
-// Different types of CURVE
-enum CurveType { ease, bounce, decelerate }
 
-/// Main core Class just 2 mandatory FIELDS [context] & [child]
-///
-/// [context] is the BuildContext de la app at this moment [child] is the widget to go,
-/// [animation] is the type of animation [curveType] is the Curve style
-/// [replacement] is bool to show back button [curves] is the final Style translated into class
+/// Different types of CURVE ANIMATION
+enum CurveType { ease, bounce, bounceOut, decelerate, elastic, linear }
+
 class RouteTransitions {
+  /// App BuiltContext
   final BuildContext context;
+
+  /// ViewPage of the destiny
   final Widget child;
+
+  /// AnymationType:
+  ///
+  /// normal, fadeIn, slideRight, slideLeft, slideTop, slideBottom, scale
   final AnimationType animation;
-  final Duration duration; // Default transition 300 ms
-  final bool replacement; // No replacement by default
+
+  /// Duration: 300ms by default
+  final Duration duration;
+
+  /// Boolean to show back button
+  final bool replacement;
+
+  /// CurveType:
+  ///
+  /// ease, bounce, bounceOut, decelerate, elastic, linear
   final CurveType curveType;
+
+  /// Curves translation
   Curve curves = Curves.ease;
 
+  /// Main core Class just 2 mandatory FIELDS [context] & [child]
+  ///
+  /// [context] is the BuildContext de la app at this moment [child] is the widget to go,
+  /// [animation] is the type of animation [curveType] is the Curve style
+  /// [replacement] is bool to show back button [curves] is the final Style translated into class
   RouteTransitions(
       {@required this.context,
       @required this.child,
@@ -52,13 +71,25 @@ class RouteTransitions {
       case AnimationType.slideBottom:
         this._slideTransition('slideBottom');
         break;
+      case AnimationType.scale:
+        this._scaleTransition();
+        break;
     }
     switch (this.curveType) {
       case CurveType.ease:
         this.curves = Curves.ease;
         break;
       case CurveType.bounce:
-        this.curves = Curves.easeInOutBack;
+        this.curves = Curves.easeInOut;
+        break;
+      case CurveType.bounceOut:
+        this.curves = Curves.bounceOut;
+        break;
+      case CurveType.linear:
+        this.curves = Curves.linearToEaseOut;
+        break;
+      case CurveType.elastic:
+        this.curves = Curves.elasticOut;
         break;
       case CurveType.decelerate:
         this.curves = Curves.decelerate;
@@ -75,9 +106,24 @@ class RouteTransitions {
     }
   }
 
-  // Controller of normal transition BORING
+  /// Controller of normal transition BORING
   void _normalTransition() {
     final route = MaterialPageRoute(builder: (_) => this.child);
+    this._pushPageType(route);
+  }
+
+  /// Controller of scale transition [curves] & [duration]
+  void _scaleTransition() {
+    final route = PageRouteBuilder(
+      pageBuilder: (_, __, ___) => this.child,
+      transitionDuration: this.duration,
+      transitionsBuilder: (_, animation, __, child) {
+        return ScaleTransition(
+          scale: animation.drive(CurveTween(curve: this.curves)),
+          child: child,
+        );
+      },
+    );
     this._pushPageType(route);
   }
 
