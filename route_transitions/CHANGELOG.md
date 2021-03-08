@@ -1,3 +1,6 @@
+## [0.3.1] - Improving Documentation
+* Added better documentation
+
 ## [0.3.0] - Added new type of Transition and 3 more types of Curves
 * ScaleTransition
 * 3 different types of curves: bounceOut, elastic and linear

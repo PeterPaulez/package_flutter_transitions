@@ -16,3 +16,6 @@ RouteTransitions(
     curveType: CurveType.decelerate, // Optional value
 );
 ```
+
+# Video Example
+<img src="https://github.com/PeterPaulez/repository/blob/main/api_login_app-1615120214725.gif?raw=true" width="400px">

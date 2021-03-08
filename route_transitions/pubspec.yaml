@@ -1,10 +1,10 @@
 name: custom_route_transition_peterpaulez
 description: This package helps how to manage transitions between different views/pages with custom curve animation also.
-version: 0.3.0
+version: 0.3.1
 homepage: https://github.com/PeterPaulez
 repository: https://github.com/PeterPaulez/package_flutter_transitions/tree/master/route_transitions
 issue_tracker: https://github.com/PeterPaulez/package_flutter_transitions/issues
-documentation: https://pub.dev/packages/custom_route_transition_peterpaulez/example
+documentation: https://github.com/PeterPaulez/package_flutter_transitions/blob/master/route_transitions/README.md
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

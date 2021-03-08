@@ -14,8 +14,9 @@ enum AnimationType {
 /// Different types of CURVE ANIMATION
 enum CurveType { ease, bounce, bounceOut, decelerate, elastic, linear }
 
+/// Main Class of the Package
 class RouteTransitions {
-  /// App BuiltContext
+  /// App BuildContext
   final BuildContext context;
 
   /// ViewPage of the destiny
@@ -40,7 +41,7 @@ class RouteTransitions {
   /// Curves translation
   Curve curves = Curves.ease;
 
-  /// Main core Class just 2 mandatory FIELDS [context] & [child]
+  /// Animates and Changes Views: two mandatory FIELDS [context] & [child]
   ///
   /// [context] is the BuildContext de la app at this moment [child] is the widget to go,
   /// [animation] is the type of animation [curveType] is the Curve style
@@ -97,7 +98,7 @@ class RouteTransitions {
     }
   }
 
-  /// Navigation PUSH decides about [replacement]
+  /// Navigates and PUSH decides about [replacement]
   void _pushPageType(Route route) {
     if (this.replacement) {
       Navigator.pushReplacement(this.context, route);
@@ -106,13 +107,13 @@ class RouteTransitions {
     }
   }
 
-  /// Controller of normal transition BORING
+  /// Shows normal transition BORING
   void _normalTransition() {
     final route = MaterialPageRoute(builder: (_) => this.child);
     this._pushPageType(route);
   }
 
-  /// Controller of scale transition [curves] & [duration]
+  /// Shows scale transition [curves] & [duration]
   void _scaleTransition() {
     final route = PageRouteBuilder(
       pageBuilder: (_, __, ___) => this.child,
@@ -127,7 +128,7 @@ class RouteTransitions {
     this._pushPageType(route);
   }
 
-  /// Controller of fadein transition [curves] & [duration]
+  /// Shows fadein transition [curves] & [duration]
   void _fadeInTransition() {
     final route = PageRouteBuilder(
       pageBuilder: (_, __, ___) => this.child,
@@ -144,9 +145,8 @@ class RouteTransitions {
     this._pushPageType(route);
   }
 
-  /// Controller of Slide [curves] & [duration] & [offSetBegin]
+  /// Shows Slide transition [curves] & [duration] & [type]
   void _slideTransition(String type) {
-    // Decide direction of animation
     Offset offSetBegin;
     if (type == 'slideRight') {
       offSetBegin = Offset(-1, 0);
